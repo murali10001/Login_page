@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>IEEE - Reset Password</title>
+    <style>
+        body { font-family: Arial; background: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .card { background: white; padding: 2rem; border-radius: 8px; width: 350px; }
+        .error { color: red; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Reset Password</h2>
+        <p th:if="${error}" class="error" th:text="${error}"></p>
+        <form th:action="@{/forgot}" method="post">
+            <input type="email" name="email" placeholder="Enter Registered Email" required style="width:100%; padding:10px; margin:5px 0;">
+            <input type="text" name="answer" placeholder="Your Security Answer" required style="width:100%; padding:10px; margin:5px 0;">
+            <input type="password" name="newPassword" placeholder="New Password" required style="width:100%; padding:10px; margin:5px 0;">
+            <button type="submit" style="width:100%; padding:10px; background:#dc3545; color:white; border:none; margin-top:10px;">Update Password</button>
+        </form>
+        <p><a href="/login">Back to Login</a></p>
+    </div>
+</body>
+</html>
