@@ -1,0 +1,35 @@
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 90;
+    font-style: normal;
+    background-color: purple;
+
+}
+
+.a {
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.b {
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+}
+.x{
+	color: white;
+	text-size: 20px;
+}
+div {
+    color: black;
+    flex-basis: 20%;
+    margin: 2px;
+
+}
+
+h2 {
+    color: yellow;
+}

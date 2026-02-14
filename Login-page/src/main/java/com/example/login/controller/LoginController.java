@@ -1,3 +1,4 @@
+
 package com.example.login.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +47,7 @@ public class LoginController {
     }
 
     @PostMapping("/forgot")
-    public String resetPassword(@RequestParam String email, 
-                                @RequestParam String answer, 
-                                @RequestParam String newPassword, 
-                                Model model) {
+    public String resetPassword(@RequestParam String email,@RequestParam String answer, @RequestParam String newPassword,Model model) {
         User user = userRepository.findByEmail(email);
         
         if (user != null && user.getSecurityAnswer().equalsIgnoreCase(answer)) {
