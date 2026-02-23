@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.login.entity.User;
 import com.example.login.repositary.UserRepository;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class LoginController {
 
@@ -20,9 +22,10 @@ public class LoginController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
+    public String loginUser(@RequestParam String username, @RequestParam String password,HttpSession session, Model model) {
         User user = userRepository.findByUsername(username);
         if (user != null && user.getPassword().equals(password)) {
+        	session.setAttribute("loggedInUser", user);
             return "dashboard"; 
         }
         model.addAttribute("error", "Invalid username or password");
@@ -61,7 +64,10 @@ public class LoginController {
     }
     
     @GetMapping("/dashboard")
-    public String showDashboard() {
-        return "dashboard";
+    public String showDashboard(HttpSession session) {
+       if(session.getAttribute("loggedInUser") == null) {
+		   return "redirect:/login";
+	   }
+    	return "dashboard";
     }
 }
